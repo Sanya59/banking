@@ -16,13 +16,13 @@ class Clients(BaseModel):
     Surname = CharField()
     Name = CharField()
     Middle_name = CharField()
-    series_and_number = FloatField()
+    series_and_number = IntegerField()
     city_registration = CharField()
     birthday = DateField()
     gender = CharField()
-    phone_number = IntegerField()
+    # phone_number = IntegerField()
     codeword = CharField()
-    valid = CharField()
+    valid = BooleanField()
 
     class Meta:
         db_table = 'clients'
@@ -32,7 +32,7 @@ class Card(BaseModel):
     Surname = CharField()
     Name = CharField()
     Middle_name = CharField()
-    series_and_number_passport = FloatField()
+    series_and_number_passport = IntegerField()
     date_of_creation = DateField()
     city_registration = CharField()
     card_tariff = CharField()
@@ -40,8 +40,8 @@ class Card(BaseModel):
     card_uid = IntegerField()
     card_expiry_date = DateField()
     card_cvc = IntegerField()
-    card_sum = FloatField()
-    valid = CharField()
+    card_sum = DecimalField()
+    valid = BooleanField()
 
     class Meta:
         db_table = 'cards'
@@ -56,7 +56,7 @@ class Operation(BaseModel):
     card_number = IntegerField()
     short_message = CharField()
     payees_card_number = IntegerField(null=True)
-    sum_operation = FloatField()
+    sum_operation = DecimalField()
     status = CharField()
     message = CharField()
 
@@ -68,7 +68,8 @@ class Operation(BaseModel):
 class Telegram(BaseModel):
     series_and_number_passport = IntegerField()
     telegram_chat_id = CharField()
+    notification_service = BooleanField()
 
     class Meta:
         # database = db
-        db_table = 'notifications'
+        db_table = 'telegram'
